@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  CarTrack-Challenge
+
+  Created by Aaron Ang on 4/5/21.
+  
+*/
+
+// GLobal
+"__t_global_ok" = "OK";
+"__t_global_cancel" = "Cancel";
+"__t_global_done" = "Done";
