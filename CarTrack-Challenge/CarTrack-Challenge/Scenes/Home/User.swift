@@ -15,7 +15,6 @@ class User: NSObject {
     var phone: String = ""
     var website: String = ""
     var address: Address?
-    var geo: Geo?
     var company: Company?
     
     convenience init(dict: NSDictionary?) {
@@ -27,7 +26,6 @@ class User: NSObject {
         self.phone = dict?["phone"] as? String ?? ""
         self.website = dict?["website"] as? String ?? ""
         self.address = Address(dict: dict?["address"] as? NSDictionary)
-        self.geo = Geo(dict: dict?["geo"] as? NSDictionary)
         self.company = Company(dict: dict?["company"] as? NSDictionary)
     }
 }

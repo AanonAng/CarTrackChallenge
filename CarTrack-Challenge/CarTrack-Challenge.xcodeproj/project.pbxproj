@@ -17,6 +17,7 @@
 		6F850EAE2642FDC000167AF3 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F850EAD2642FDC000167AF3 /* Company.swift */; };
 		6F850EB02643025A00167AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F850EAF2643025A00167AF3 /* HomeViewModel.swift */; };
 		6F850EB226430FA900167AF3 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F850EB126430FA900167AF3 /* HomeCell.swift */; };
+		6F850EB426431D1500167AF3 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F850EB326431D1500167AF3 /* LocationViewController.swift */; };
 		6F91222F263FC215004B3B86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F91222E263FC215004B3B86 /* AppDelegate.swift */; };
 		6F912231263FC215004B3B86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F912230263FC215004B3B86 /* SceneDelegate.swift */; };
 		6F912233263FC215004B3B86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F912232263FC215004B3B86 /* ViewController.swift */; };
@@ -72,6 +73,7 @@
 		6F850EAD2642FDC000167AF3 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		6F850EAF2643025A00167AF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6F850EB126430FA900167AF3 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		6F850EB326431D1500167AF3 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		6F91222B263FC215004B3B86 /* CarTrack-Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CarTrack-Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F91222E263FC215004B3B86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F912230263FC215004B3B86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -295,9 +297,10 @@
 				6F850EAF2643025A00167AF3 /* HomeViewModel.swift */,
 				6F850EB126430FA900167AF3 /* HomeCell.swift */,
 				6F850EA72642FD4000167AF3 /* User.swift */,
-				6F850EA92642FDA900167AF3 /* Geo.swift */,
 				6F850EAB2642FDB200167AF3 /* Address.swift */,
+				6F850EA92642FDA900167AF3 /* Geo.swift */,
 				6F850EAD2642FDC000167AF3 /* Company.swift */,
+				6F850EB326431D1500167AF3 /* LocationViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				6F9122A826414149004B3B86 /* Binding+Extensions.swift in Sources */,
 				6F9122A426412C4B004B3B86 /* Protocols.swift in Sources */,
 				6F91229E26412BD1004B3B86 /* HomeViewController.swift in Sources */,
+				6F850EB426431D1500167AF3 /* LocationViewController.swift in Sources */,
 				6FA1C1C526426177001C8E84 /* CountryViewModel.swift in Sources */,
 				6F9122A626412C5F004B3B86 /* ValidationService.swift in Sources */,
 				6F91222F263FC215004B3B86 /* AppDelegate.swift in Sources */,
@@ -774,6 +778,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A47CFG9W7;
 				INFOPLIST_FILE = "CarTrack-Challenge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -794,6 +799,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A47CFG9W7;
 				INFOPLIST_FILE = "CarTrack-Challenge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

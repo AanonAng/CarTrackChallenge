@@ -39,9 +39,13 @@ class HomeViewController: BaseViewController {
             })
             .disposed(by: disposebag)
         
-//        viewModel.countries.drive(tableView.rx.items(cellIdentifier: "CountryCell", cellType: CountryCell.self)) { (row, element, cell) in
-//            cell.updateDisplay(country: element, selectedCountry: self.currentCountry)
-//        }.disposed(by: disposebag)
+        tableView.rx.modelSelected(User.self)
+            .subscribe(onNext: { [weak self] value in
+                let vc = self?.storyboard?.instantiateViewController(withIdentifier: "LocationViewController") as! LocationViewController
+                vc.user = value
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposebag)
     }
     
     func setText() {

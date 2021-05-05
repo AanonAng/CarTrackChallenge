@@ -12,6 +12,7 @@ class Address: NSObject {
     var suite: String = ""
     var city: String = ""
     var zipcode: String = ""
+    var geo: Geo?
     
     convenience init(dict: NSDictionary?) {
         self.init()
@@ -19,5 +20,6 @@ class Address: NSObject {
         self.suite = dict?["suite"] as? String ?? ""
         self.city = dict?["city"] as? String ?? ""
         self.zipcode = dict?["zipcode"] as? String ?? ""
+        self.geo = Geo(dict: dict?["geo"] as? NSDictionary)
     }
 }

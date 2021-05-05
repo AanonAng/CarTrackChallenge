@@ -104,7 +104,7 @@ class LoginViewController: BaseViewController {
         self.countryButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 self?.view.endEditing(true)
-                let vc = self?.storyboard?.instantiateViewController(identifier: "CountryViewController") as! CountryViewController
+                let vc = self?.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
                 // Update button title when user selected country
                 vc.selectedObserver
                     .subscribe(onNext: { [weak self] selectedCountry in

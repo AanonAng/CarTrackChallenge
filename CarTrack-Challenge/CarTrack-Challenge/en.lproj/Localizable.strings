@@ -31,7 +31,10 @@
 
 // Home Cell
 "__t_home_cell_name" = "Name:";
-"__t_home_cell_username" = "username:";
+"__t_home_cell_username" = "Username:";
 "__t_home_cell_phone" = "Phone:";
 "__t_home_cell_email" = "Email:";
 "__t_home_cell_company" = "Company:";
+
+// Location
+"__t_location_title" = "Location";
