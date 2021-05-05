@@ -55,3 +55,4 @@ class Alert: NSObject {
         vc.present(alert, animated: true, completion: nil)
     }
 }
+

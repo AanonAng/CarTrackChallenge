@@ -15,13 +15,15 @@ class LoginViewModel {
     
     let validatedUsername: Observable<ValidationResult>
     let validatedPassword: Observable<ValidationResult>
-//    let validatedCountry: Observable<ValidationResult>
+    let validatedCountry: Observable<ValidationResult>
+    
     let loginEnabled: Observable<Bool>
     let logined: Observable<Bool>
     
     init(input: (
             username: Observable<String>,
             password: Observable<String>,
+            country: Observable<String>,
             countryDidTap: Observable<Void>,
             loginDidTap: Observable<Void>
         ),
@@ -49,23 +51,23 @@ class LoginViewModel {
             })
             .share(replay: 1)
         
-//        validatedCountry = input.countryDid
-//            .map({ password in
-//                return validationService.validatePassword(password)
-//            })
-//            .share(replay: 1)
+        validatedCountry = input.country
+            .map({ country in
+                return validationService.validateCountry(country)
+            })
+            .share(replay: 1)
+
+        let loginInfo = Observable.combineLatest(input.username, input.password, input.country) {(username: $0, password: $1, country: $2)}
         
-        let usernameAndPassword = Observable.combineLatest(input.username, input.password) {(username: $0, password: $1)}
-        
-        logined = input.loginDidTap.asObservable().withLatestFrom(usernameAndPassword)
+        logined = input.loginDidTap.asObservable().withLatestFrom(loginInfo)
             .flatMapLatest{ pair in
-            return database.login(pair.username, password: pair.password, country: "")
+                return database.login(pair.username, password: pair.password, country: pair.country)
                 .observe(on: MainScheduler.instance)
                 .catchAndReturn(false)
             }.share(replay: 1)
         
-        loginEnabled = Observable.combineLatest(validatedUsername, validatedPassword) { username, password in
-            username.isValid && password.isValid
+        loginEnabled = Observable.combineLatest(validatedUsername, validatedPassword, validatedCountry) { username, password, country in
+            username.isValid && password.isValid && country.isValid
         }
         .distinctUntilChanged()
         .share(replay: 1)

@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CoreData
 
 class DefaultValidationService: ValidationService {
 
@@ -38,7 +39,7 @@ class DefaultValidationService: ValidationService {
     
     func validateCountry(_ country: String) -> ValidationResult {
         let placeholder = localizedString("__t_login_country")
-        if placeholder.lowercased() == country.lowercased() {
+        if placeholder.lowercased() == country.lowercased() || country.count == 0 {
             return .empty(message: localizedString("__t_login_country_empty"))
         }
         
@@ -48,9 +49,29 @@ class DefaultValidationService: ValidationService {
 
 class DefaultDataBase: DataBase {
     static let shared = DefaultDataBase()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private init() {}
     
     func login(_ username: String, password: String, country: String) -> Observable<Bool> {
-        return Observable.just(true)
+        var isValidLogin: Bool = false
+        
+        let managedObjectContext = self.appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Login")
+
+        do {
+            let fetchedEmployees = try managedObjectContext.fetch(fetchRequest)
+            if fetchedEmployees.count > 0 {
+                let savedUsername = fetchedEmployees[0].value(forKey: "username") as? String
+                let savedPassword = fetchedEmployees[0].value(forKey: "password") as? String
+                let savedCountry = fetchedEmployees[0].value(forKey: "country") as? String
+                if savedUsername == username && savedPassword == password && savedCountry == country {
+                    isValidLogin = true
+                }
+            }
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+        
+        return Observable.just(isValidLogin)
     }
 }

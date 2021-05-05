@@ -15,9 +15,13 @@
 // Login
 "__t_login_username" = "Username";
 "__t_login_password" = "Password";
-"__t_login_country" = "Country";
+"__t_login_country" = "Select Country";
 "__t_login_login" = "Login";
 "__t_login_username_empty" = "Username cannot be empty";
 "__t_login_password_empty" = "Password cannot be empty";
 "__t_login_country_empty" = "Country cannot be empty";
 "__t_login_password_length" = "Password must be at least %d characters";
+"__t_login_failed" = "Username, password or country is incorrect, please try again";
+
+// Country
+"__t_country_username" = "Country";

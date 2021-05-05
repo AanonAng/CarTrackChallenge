@@ -33,6 +33,10 @@
 		6F9122A826414149004B3B86 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9122A726414149004B3B86 /* Binding+Extensions.swift */; };
 		6F9122AA2642357B004B3B86 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9122A92642357B004B3B86 /* Login.swift */; };
 		6F9122AB26424567004B3B86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9122AD26424567004B3B86 /* Localizable.strings */; };
+		6F9122AF26425C27004B3B86 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9122AE26425C27004B3B86 /* CountryViewController.swift */; };
+		6FA1C1C526426177001C8E84 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C1C426426177001C8E84 /* CountryViewModel.swift */; };
+		6FA1C1C726426370001C8E84 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C1C626426370001C8E84 /* SearchService.swift */; };
+		6FA1C1C9264275FA001C8E84 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1C1C8264275FA001C8E84 /* CountryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		6F9122A726414149004B3B86 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		6F9122A92642357B004B3B86 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		6F9122AC26424567004B3B86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F9122AE26425C27004B3B86 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		6FA1C1C426426177001C8E84 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
+		6FA1C1C626426370001C8E84 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		6FA1C1C8264275FA001C8E84 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		8E32E823A197D5A8B88A890A /* Pods_CarTrack_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarTrack_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1269354A6DFD4CFADCB9E0B /* Pods-CarTrack-ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarTrack-ChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-CarTrack-ChallengeTests/Pods-CarTrack-ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC3D002302BA79E3713AEFE9 /* Pods_CarTrack_Challenge_CarTrack_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarTrack_Challenge_CarTrack_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +257,10 @@
 				6F91229F26412BFC004B3B86 /* LoginViewController.swift */,
 				6F9122A126412C2B004B3B86 /* LoginViewModel.swift */,
 				6F9122A92642357B004B3B86 /* Login.swift */,
+				6F9122AE26425C27004B3B86 /* CountryViewController.swift */,
+				6FA1C1C426426177001C8E84 /* CountryViewModel.swift */,
+				6FA1C1C626426370001C8E84 /* SearchService.swift */,
+				6FA1C1C8264275FA001C8E84 /* CountryCell.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -527,14 +539,18 @@
 				6F91229226412A08004B3B86 /* AlertUtils.swift in Sources */,
 				6F91229A26412A7B004B3B86 /* BaseViewController.swift in Sources */,
 				6F912290264129F1004B3B86 /* NotificationCenter+Extension.swift in Sources */,
+				6F9122AF26425C27004B3B86 /* CountryViewController.swift in Sources */,
 				6F9122A226412C2B004B3B86 /* LoginViewModel.swift in Sources */,
 				6F9122A826414149004B3B86 /* Binding+Extensions.swift in Sources */,
 				6F9122A426412C4B004B3B86 /* Protocols.swift in Sources */,
 				6F91229E26412BD1004B3B86 /* HomeViewController.swift in Sources */,
+				6FA1C1C526426177001C8E84 /* CountryViewModel.swift in Sources */,
 				6F9122A626412C5F004B3B86 /* ValidationService.swift in Sources */,
 				6F91222F263FC215004B3B86 /* AppDelegate.swift in Sources */,
+				6FA1C1C726426370001C8E84 /* SearchService.swift in Sources */,
 				6F912231263FC215004B3B86 /* SceneDelegate.swift in Sources */,
 				6F91229826412A61004B3B86 /* Constants.swift in Sources */,
+				6FA1C1C9264275FA001C8E84 /* CountryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

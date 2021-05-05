@@ -6,16 +6,57 @@
 //
 
 import Foundation
+import CoreData
+import RxCoreData
 
-class Login: ObservableObject {
+struct Login {
+    var id: String = ""
     var username: String = ""
     var password: String = ""
     var country: String = ""
-    
-    convenience init(username: String, password: String, country: String) {
-        self.init()
-        self.username = username
-        self.password = password
-        self.country = country
+}
+
+extension Login : Equatable { }
+
+//extension Login : IdentifiableType {
+//    typealias Identity = String
+//
+//    var identity: Identity { return id }
+//}
+
+extension Login: Persistable {
+    var identity: String {
+        return id
     }
+    
+    typealias T = NSManagedObject
+    
+    static var entityName: String {
+        return "Login"
+    }
+    
+    static var primaryAttributeName: String {
+        return "id"
+    }
+    
+    init(entity: T) {
+        id = entity.value(forKey: "id") as! String
+        username = entity.value(forKey: "username") as! String
+        password = entity.value(forKey: "password") as! String
+        country = entity.value(forKey: "country") as! String
+    }
+    
+    func update(_ entity: T) {
+        entity.setValue(id, forKey: "id")
+        entity.setValue(username, forKey: "username")
+        entity.setValue(password, forKey: "password")
+        entity.setValue(country, forKey: "country")
+        
+        do {
+            try entity.managedObjectContext?.save()
+        } catch let e {
+            print(e)
+        }
+    }
+    
 }

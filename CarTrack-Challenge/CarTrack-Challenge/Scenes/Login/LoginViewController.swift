@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import CoreData
+import RxCoreData
 
 class LoginViewController: BaseViewController {
 
@@ -21,15 +25,26 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var countryValidationLabel: UILabel!
     
     @IBOutlet weak var loginButton: UIButton!
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    private var selectedCountry = BehaviorRelay(value: "")
+    
+    var countryObserver: Observable<String> {
+        return selectedCountry.asObservable()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.isNavigationBarHidden = true
         self.setText()
         self.setupLoginView()
         self.setupCountryButton()
         self.setupLoginButton()
+        
+        self.createMockLoginInfo()
         
         // End editing when tap background view
         let tapGesture = UITapGestureRecognizer()
@@ -44,6 +59,7 @@ class LoginViewController: BaseViewController {
             input: (
                 username: self.usernameTextField.rx.text.orEmpty.asObservable(),
                 password: self.passwordTextField.rx.text.orEmpty.asObservable(),
+                country: countryObserver,
                 countryDidTap: self.countryButton.rx.tap.asObservable(),
                 loginDidTap: loginButton.rx.tap.asObservable()),
             dependency: (
@@ -60,6 +76,10 @@ class LoginViewController: BaseViewController {
             .bind(to: passwordValidationLabel.rx.validationResult)
             .disposed(by: disposebag)
         
+        viewModel.validatedCountry
+            .bind(to: countryValidationLabel.rx.validationResult)
+            .disposed(by: disposebag)
+        
         viewModel.loginEnabled
             .subscribe(onNext: { [weak self] valid  in
                 self?.loginButton.isEnabled = valid
@@ -67,10 +87,37 @@ class LoginViewController: BaseViewController {
             })
             .disposed(by: disposebag)
         
-        viewModel.logined.subscribe(onNext: { logined in
-            print("user login: \(logined)")
+        viewModel.logined.subscribe(onNext: { success in
+            if success {
+                
+            } else {
+                self.showAlert(title: "", message: localizedString("__t_login_failed"))
+            }
         })
         .disposed(by: disposebag)
+        
+        self.countryButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+                let vc = self?.storyboard?.instantiateViewController(identifier: "CountryViewController") as! CountryViewController
+                // Update button title when user selected country
+                vc.selectedObserver
+                    .subscribe(onNext: { [weak self] selectedCountry in
+                        if selectedCountry.count > 0 {
+                            self?.countryButton.setTitle(selectedCountry, for: .normal)
+                            self?.countryButton.setTitleColor(.black, for: .normal)
+                            self?.selectedCountry.accept(selectedCountry)
+                        }
+                    })
+                    .disposed(by: self!.disposebag)
+                
+                // Pass current selected country to countryVC
+                if self?.countryButton.titleLabel?.text != localizedString("__t_login_country") {
+                    vc.currentCountry = self?.countryButton.titleLabel?.text ?? ""
+                }
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposebag)
     }
     
     func setText() {
@@ -94,4 +141,17 @@ class LoginViewController: BaseViewController {
         self.loginButton.layer.cornerRadius = 8.0
     }
 
+    // MARK: Mock Login Info
+    func createMockLoginInfo() {
+        let managedObjectContext = self.appDelegate.managedObjectContext
+        
+        managedObjectContext.rx.entities(Login.self)
+            .subscribe({ logins in
+                if logins.element?.count == 0 {
+                    let login = Login(id: "1", username: "aaron", password: "abcd1234", country: "Singapore")
+                    try? managedObjectContext.rx.update(login)
+                }
+            })
+            .disposed(by: disposebag)
+    }
 }
