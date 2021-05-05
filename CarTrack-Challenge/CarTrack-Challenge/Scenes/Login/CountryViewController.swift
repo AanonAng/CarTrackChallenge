@@ -55,6 +55,6 @@ class CountryViewController: BaseViewController {
     }
     
     func setText() {
-        self.navigationItem.title = localizedString("__t_country_username")
+        self.navigationItem.title = localizedString("__t_country_title")
     }
 }

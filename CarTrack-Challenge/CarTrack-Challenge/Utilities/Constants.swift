@@ -12,4 +12,8 @@ struct Constants {
     struct UserDefaultKey {
         static let currentLanguage = "CURRENTLANGUAGE"
     }
+    
+    struct UrlType {
+        static let users = "users"
+    }
 }

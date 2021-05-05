@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-CarTrack-Challenge/Pods-CarTrack-Challeng
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework
+${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework
 ${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework

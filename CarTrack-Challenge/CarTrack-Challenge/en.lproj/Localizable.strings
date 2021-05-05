@@ -24,4 +24,14 @@
 "__t_login_failed" = "Username, password or country is incorrect, please try again";
 
 // Country
-"__t_country_username" = "Country";
+"__t_country_title" = "Country";
+
+// Home
+"__t_home_title" = "Home";
+
+// Home Cell
+"__t_home_cell_name" = "Name:";
+"__t_home_cell_username" = "username:";
+"__t_home_cell_phone" = "Phone:";
+"__t_home_cell_email" = "Email:";
+"__t_home_cell_company" = "Company:";

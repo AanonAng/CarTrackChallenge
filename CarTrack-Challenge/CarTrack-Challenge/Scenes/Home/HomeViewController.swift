@@ -6,24 +6,45 @@
 //
 
 import UIKit
+import RxDataSources
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setText()
+        self.tableView.rowHeight = 150
+        
+        let viewModel = HomeViewModel(clientService: ClientService())
+        
+        self.showActivityIndicator()
+        viewModel.fetchUsersObserver
+            .bind(to: tableView.rx.items(cellIdentifier: "HomeCell", cellType: HomeCell.self)) { (row, element, cell) in
+                self.hideActivityIndicator()
+                cell.updateDisplay(user: element)
+            }
+            .disposed(by: disposebag)
+        
+        
+        viewModel.fetchUserErrorObserver
+            .subscribe(onNext: { [weak self] error in
+                if error.count > 0 {
+                    self?.hideActivityIndicator()
+                    self?.showAlert(title: "", message: error)
+                }
+            })
+            .disposed(by: disposebag)
+        
+//        viewModel.countries.drive(tableView.rx.items(cellIdentifier: "CountryCell", cellType: CountryCell.self)) { (row, element, cell) in
+//            cell.updateDisplay(country: element, selectedCountry: self.currentCountry)
+//        }.disposed(by: disposebag)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setText() {
+        self.navigationItem.title = localizedString("__t_home_title")
     }
-    */
-
 }

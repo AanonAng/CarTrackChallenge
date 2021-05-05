@@ -89,7 +89,12 @@ class LoginViewController: BaseViewController {
         
         viewModel.logined.subscribe(onNext: { success in
             if success {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 
+                let nc = UINavigationController(rootViewController: vc)
+                
+                self.view.window?.rootViewController = nc
+                self.view.window?.makeKeyAndVisible()
             } else {
                 self.showAlert(title: "", message: localizedString("__t_login_failed"))
             }
