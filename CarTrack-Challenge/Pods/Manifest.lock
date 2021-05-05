@@ -3,11 +3,21 @@ PODS:
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
+  - Realm (10.7.0):
+    - Realm/Headers (= 10.7.0)
+  - Realm/Headers (10.7.0)
+  - RealmSwift (10.7.0):
+    - Realm (= 10.7.0)
   - RxBlocking (6.1.0):
     - RxSwift (= 6.1.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
     - RxSwift (= 6.1.0)
+  - RxRealm (5.0.1):
+    - Realm (~> 10.5)
+    - RealmSwift (~> 10.5)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
@@ -19,6 +29,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - RxBlocking (= 6.1.0)
   - RxCocoa (= 6.1.0)
+  - RxRealm
   - RxSwift (= 6.1.0)
   - RxTest (= 6.1.0)
 
@@ -26,8 +37,11 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - NVActivityIndicatorView
+    - Realm
+    - RealmSwift
     - RxBlocking
     - RxCocoa
+    - RxRealm
     - RxRelay
     - RxSwift
     - RxTest
@@ -35,12 +49,15 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  Realm: a03c41a3afbda6c197ba4dfba5428b8b54cc2df4
+  RealmSwift: 5e7abc842276d7fabd386e67afbf3efde54eb1c6
   RxBlocking: 602095fba0bce7b16b56ccec89edf780c248b7d9
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxRealm: bd7c601e78cfebe48c24d4550db83c31e1ab2c33
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   RxTest: 9d26616eaff4a7e75f4ecae9b2c24840f2e8218d
 
-PODFILE CHECKSUM: 8fb0654539a6837849d83509fb574d8a27c82c67
+PODFILE CHECKSUM: 897ebe2a4ce3e38055c3629c6b177a9999da8709
 
 COCOAPODS: 1.10.1

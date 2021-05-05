@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  CarTrack-Challenge
+
+  Created by Aaron Ang on 4/5/21.
+  
+*/
+
+// GLobal
+
+"__t_global_ok" = "OK";
+"__t_global_cancel" = "Cancel";
+"__t_global_done" = "Done";
+
+// Login
+"__t_login_username" = "Username";
+"__t_login_password" = "Password";
+"__t_login_country" = "Country";
+"__t_login_login" = "Login";
+"__t_login_username_empty" = "Username cannot be empty";
+"__t_login_password_empty" = "Password cannot be empty";
+"__t_login_country_empty" = "Country cannot be empty";
+"__t_login_password_length" = "Password must be at least %d characters";
