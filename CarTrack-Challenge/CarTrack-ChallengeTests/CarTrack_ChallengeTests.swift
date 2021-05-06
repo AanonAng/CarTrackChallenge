@@ -30,4 +30,27 @@ class CarTrack_ChallengeTests: XCTestCase {
         }
     }
 
+    // Alamofire
+    func testUserRequest() {
+        let e = expectation(description: "Alamofire")
+        ClientService.shared.userRequest { result in
+            switch result {
+            case .success(let response):
+                XCTAssertNotNil(response, "userRequest not nil")
+                self.testUnwrapUserResponse(response: response)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            e.fulfill()
+        }
+        waitForExpectations(timeout: 15.0, handler: nil)
+    }
+    
+    func testUnwrapUserResponse(response: Any) {
+        if let array = response as? NSArray {
+            XCTAssertNotNil(array, "response is NSArray")
+        } else {
+            XCTFail("response is not NSArray")
+        }
+    }
 }
