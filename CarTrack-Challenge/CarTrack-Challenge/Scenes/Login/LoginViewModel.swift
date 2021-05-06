@@ -61,7 +61,7 @@ class LoginViewModel {
         
         logined = input.loginDidTap.asObservable().withLatestFrom(loginInfo)
             .flatMapLatest{ pair in
-                return database.login(pair.username, password: pair.password, country: pair.country)
+                return database.login(pair.username, password: pair.password)
                 .observe(on: MainScheduler.instance)
                 .catchAndReturn(false)
             }.share(replay: 1)

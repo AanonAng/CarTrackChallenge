@@ -11,19 +11,15 @@ import Alamofire
 class ClientService {
     // MARK: - Singleton
     static let shared = ClientService()
-    
-    // MARK: - URL
-    private var baseUrl = "https://jsonplaceholder.typicode.com/"
-    
+
     // MARK: - Services
     func userRequest(completion: @escaping(Result<[User], Error>) -> Void) {
-        let url = "\(baseUrl)\(Constants.UrlType.users)"
-        AF.request(url).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                if let dicts = value as? [NSDictionary] {
-                    var users: [User] = []
-                    for dict in dicts {
+        BaseService.shared.getRequest(urlType: Constants.UrlType.users) { result in
+            switch result {
+            case .success(let response):
+                var users: [User] = []
+                if let array = response as? [NSDictionary] {
+                    for dict in array {
                         let user = User(dict: dict)
                         users.append(user)
                     }

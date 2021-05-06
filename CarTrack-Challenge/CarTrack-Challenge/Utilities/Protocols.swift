@@ -17,7 +17,7 @@ enum ValidationResult {
 }
 
 protocol DataBase {
-    func login(_ username: String, password: String, country: String) -> Observable<Bool>
+    func login(_ username: String, password: String) -> Observable<Bool>
 }
 
 protocol ValidationService {

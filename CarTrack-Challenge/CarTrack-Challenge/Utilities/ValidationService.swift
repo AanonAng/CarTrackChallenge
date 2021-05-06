@@ -52,7 +52,7 @@ class DefaultDataBase: DataBase {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private init() {}
     
-    func login(_ username: String, password: String, country: String) -> Observable<Bool> {
+    func login(_ username: String, password: String) -> Observable<Bool> {
         var isValidLogin: Bool = false
         
         let managedObjectContext = self.appDelegate.managedObjectContext
@@ -63,8 +63,7 @@ class DefaultDataBase: DataBase {
             if fetchedEmployees.count > 0 {
                 let savedUsername = fetchedEmployees[0].value(forKey: "username") as? String
                 let savedPassword = fetchedEmployees[0].value(forKey: "password") as? String
-                let savedCountry = fetchedEmployees[0].value(forKey: "country") as? String
-                if savedUsername == username && savedPassword == password && savedCountry == country {
+                if savedUsername == username && savedPassword == password {
                     isValidLogin = true
                 }
             }

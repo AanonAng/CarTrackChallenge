@@ -18,12 +18,6 @@ struct Login {
 
 extension Login : Equatable { }
 
-//extension Login : IdentifiableType {
-//    typealias Identity = String
-//
-//    var identity: Identity { return id }
-//}
-
 extension Login: Persistable {
     var identity: String {
         return id
